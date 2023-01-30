@@ -7,6 +7,11 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "100"
 spec:
+  ignoreDifferences:
+  - group: apps
+    kind: OperatorGroup
+    jsonPointers:
+    - /metadata/annotations/olm.providedAPIs
   destination:
     namespace: ibm-common-services
     server: https://kubernetes.default.svc
