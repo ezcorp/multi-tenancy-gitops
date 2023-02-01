@@ -116,7 +116,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: services
+  name: services-dev-cluster
   annotations:
     argocd.argoproj.io/sync-wave: "200"
   labels:
@@ -127,7 +127,7 @@ spec:
     server: https://kubernetes.default.svc
   project: services
   source: # repoURL  and targetRevision populated by kustomize patches in 2-services/kustomization.yaml
-    path: 0-bootstrap/single-cluster/2-services
+    path: 0-bootstrap/others/3-multi-cluster/cluster-2-dev/2-services
   syncPolicy:
     automated:
       prune: true
