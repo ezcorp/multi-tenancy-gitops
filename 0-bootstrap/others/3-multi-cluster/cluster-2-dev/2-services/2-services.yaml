@@ -14,16 +14,14 @@ spec:
     server: https://kubernetes.default.svc
   - namespace: ibm-common-services
     server: https://kubernetes.default.svc
-  - namespace: cloudpak
+  - namespace: openshift-logging
     server: https://kubernetes.default.svc
   - namespace: redhat-operators
     server: https://kubernetes.default.svc
   - namespace: openshift-operators
     server: https://kubernetes.default.svc
   - namespace: openshift-marketplace
-    server: https://kubernetes.default.svc
-  - namespace: ci
-    server: https://kubernetes.default.svc
+    server: https://kubernetes-default.svc
   - namespace: dev
     server: https://kubernetes.default.svc
   - namespace: staging
@@ -34,43 +32,13 @@ spec:
     server: https://kubernetes.default.svc
   - namespace: istio-system
     server: https://kubernetes.default.svc
-  - namespace: openldap
-    server: https://kubernetes.default.svc
-  - namespace: instana-agent
-    server: https://kubernetes.default.svc
   - namespace: openshift-gitops
     server: https://kubernetes.default.svc
   - namespace: openshift-serverless
     server: https://kubernetes.default.svc
-  - namespace: spp
-    server: https://kubernetes.default.svc
   - namespace: knative-serving
     server: https://kubernetes.default.svc
-  - namespace: spp-velero
-    server: https://kubernetes.default.svc
-  - namespace: baas
-    server: https://kubernetes.default.svc
-  - namespace: robot-shop
-    server: https://kubernetes.default.svc
-  - namespace: db2
-    server: https://kubernetes.default.svc
-  - namespace: mq
-    server: https://kubernetes.default.svc
-  - namespace: pem
-    server: https://kubernetes.default.svc
-  - namespace: b2bi-prod
-    server: https://kubernetes.default.svc
-  - namespace: b2bi-nonprod
-    server: https://kubernetes.default.svc
-  - namespace: ssp
-    server: https://kubernetes.default.svc
-  - namespace: sccm
-    server: https://kubernetes.default.svc
   - namespace: kube-system
-    server: https://kubernetes.default.svc
-  - namespace: cp4ba
-    server: https://kubernetes.default.svc
-  - namespace: odm
     server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   # TODO: SCC needs to be moved to 1-infra, here for now for artifactory
@@ -111,11 +79,11 @@ spec:
   roles:
   # A role which provides read-only access to all applications in the project
   - name: read-only
-    description: Read-only privileges to my-project
+    description: Read-only privileges to Project services
     policies:
-    - p, proj:my-project:read-only, applications, get, my-project/*, allow
+    - p, proj:services:read-only, applications, get, services/*, allow
     groups:
-    - argocd-admins
+    - argocd-ro-users
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -136,4 +104,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-

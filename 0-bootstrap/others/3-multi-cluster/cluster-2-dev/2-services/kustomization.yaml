@@ -1,5 +1,7 @@
 resources:
-# IBM Software
+
+# -argocd/operators/cert-manager.yaml
+# -argocd/instances/cert-manager-instance.yaml
 
 ## Cloud Pak for Integration
 #- argocd/operators/ibm-ace-operator.yaml
@@ -102,9 +104,6 @@ resources:
 
 # Required for IBM MQ
 #- argocd/instances/openldap.yaml
-# Required for IBM ACE, IBM MQ
-- argocd/operators/cert-manager.yaml
-#- argocd/instances/cert-manager-instance.yaml
 
 # Sealed Secrets
 #- argocd/instances/sealed-secrets.yaml
